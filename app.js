@@ -1,7 +1,7 @@
 const express = require("express");
 const mongojs = require("mongojs");
 const app = express();
-let db = mongojs("mongodb://node-express-monog/Test", ["test"]);
+let db = mongojs("mongodb://mongo:27017/Test", ["test"]);
 app.get("/", (req, res) => {
   res.send("Hello world");
 });
