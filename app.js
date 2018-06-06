@@ -17,6 +17,12 @@ app.get("/hello", (req, res) => {
   });
 });
 
+app.get("/display", (req, res) => {
+  db.test.find({}, (err, docs) => {
+    res.send(docs);
+  });
+});
+
 app.listen(3000, () => {
   console.log("Server listening at port 3000");
 });
