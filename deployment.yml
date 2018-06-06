@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+    name: krapp-deployment
+spec:
+  replicas: 2
+  selector:
+      matchLabels:
+          app: node-express-krapp
+  template:
+    metadata:
+      labels: 
+        app: node-express-krapp
+    spec:
+      containers:
+        - name: krapp
+          image: aravi123/krappnode:latest
+          ports:
+            - containerPort: 3000

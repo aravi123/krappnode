@@ -1,0 +1,12 @@
+kind : Pod
+apiVersion: v1
+metadata:
+  name : krapp
+  labels:
+    app: node-express-krapp
+spec:
+  containers:
+    - name: krapp  
+      image : aravi123/krappnode:latest
+      ports:
+        - containerPort : 3000
