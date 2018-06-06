@@ -1,13 +1,20 @@
 const express = require("express");
-
+const mongojs = require("mongojs");
 const app = express();
-
+let db = mongojs("mongodb://node-express-monog/Test", ["test"]);
 app.get("/", (req, res) => {
   res.send("Hello world");
 });
 
 app.get("/hello", (req, res) => {
-  res.send("Kubernetes is awesome");
+  db.test.insert({ name: "hello" }, err => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("sucess");
+      res.send("Mongo Connected");
+    }
+  });
 });
 
 app.listen(3000, () => {
