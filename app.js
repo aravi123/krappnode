@@ -3,7 +3,7 @@ const mongojs = require("mongojs");
 const app = express();
 let db = mongojs("mongodb://mongo:27017/Test", ["test"]);
 app.get("/", (req, res) => {
-  console.log(process.env.DD_KUBERNETES_KUBELET_HOST);
+  console.log(process.env);
   res.send("Hello world");
 });
 
