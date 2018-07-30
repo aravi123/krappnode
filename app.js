@@ -1,27 +1,11 @@
 const express = require("express");
-const mongojs = require("mongojs");
+const dogstatsd = require("node-dogstatsd").StatsD;
 const app = express();
-let db = mongojs("mongodb://mongo:27017/Test", ["test"]);
 app.get("/", (req, res) => {
-  console.log(process.env);
-  res.send("Hello world");
-});
-
-app.get("/hello", (req, res) => {
-  db.test.insert({ name: "hello" }, err => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("sucess");
-      res.send("Mongo Connected");
-    }
-  });
-});
-
-app.get("/display", (req, res) => {
-  db.test.find({}, (err, docs) => {
-    res.send(docs);
-  });
+  c = new dogstatsd(`${process.env.DOGSTATSD_HOST_IP}`, 8125);
+  console.log(c);
+  c.increment("fucking.asshole");
+  res.send("hello World");
 });
 
 app.listen(3000, () => {
