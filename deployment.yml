@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: krapp
-          image: aravi123/krappnode:deploymentv2
+          image: aravi123/krappnode:deploymentv3
           ports:
             - containerPort: 3000
           env:
